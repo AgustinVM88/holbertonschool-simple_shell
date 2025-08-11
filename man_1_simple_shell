@@ -1,0 +1,41 @@
+.TH hsh 1 "Agosto 2025" "Versión 1.0" "Manual del Usuario"
+.SH NOMBRE
+hsh \- Shell simple desarrollado en C
+.SH SINOPSIS
+.B hsh
+.P
+Modo interactivo o no interactivo.
+.SH DESCRIPCIÓN
+.B hsh
+es un shell simple que interpreta y ejecuta comandos ingresados por el usuario o recibidos desde la entrada estándar.
+.P
+En modo interactivo, el usuario escribe un comando y
+.B hsh
+lo ejecuta, mostrando un prompt.
+En modo no interactivo, los comandos pueden ser enviados mediante una tubería o redirección de entrada.
+.SH MODO INTERACTIVO
+Ejemplo:
+.P
+.RS
+.B ./hsh
+.br
+($) ls
+.br
+($) exit
+.RE
+.SH MODO NO INTERACTIVO
+Ejemplo:
+.P
+.RS
+.B echo "ls" | ./hsh
+.br
+.B cat comandos.txt | ./hsh
+.RE
+.SH COMANDOS SOPORTADOS
+- Ejecución de comandos del sistema (ej: ls, pwd, echo).
+- Comando interno:
+.B exit
+para salir del shell.
+.SH AUTORES
+Agustin Vidal
+Bruno Salle
