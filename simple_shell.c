@@ -13,38 +13,30 @@ void run_shell(void)
 	size_t len = 0;    /* Tamano asignado por getline */
 	ssize_t read;      /* Numero de caracteres leidos */
 
-	if (isatty(STDIN_FILENO)) /* Modo interactivo */
+	while (1)
 	{
-		while (1)
+		/* Modo interactivo */
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
+
+		/* Lee entrada del usuario */
+		read = getline(&line, &len, stdin);
+
+		/* Si getline devuelve -1 => EOF (Ctrl+D) o error */
+		if (read == -1)
 		{
-			printf("$ "); /* Mostrar prompt */
-
-			/* Leer la linea de entrada */
-			read = getline(&line, &len, stdin);
-
-			/* Si getline devuelve -1 => EOF(Ctrl+D) o error */
-			if (read == -1)
-			{
-				free(line);
-				break;
-			}
-			/* Elimina el salto de linea final si existe */
-			line[strcspn(line, "\n")] = '\0';
-
-			/* Solo ejecuta si no esta vacio */
-			if (strlen(line) > 0)
-				execute_command(line);
-
+			free(line);
+			break;
 		}
-	}
-	else /* Modo no interactivo */
-	{
-		while ((read = getline(&line, &len, stdin)) != -1)
-		{
-			line[strcspn(line, "\n")] = '\0';
-			if (strlen(line) > 0)
-				execute_command(line);
-		}
-		free(line);
+		/* Eliminar el salto de linea al final de la entrada */
+		if (line[read - 1] == '\n')
+			line[read - 1] = '\0';
+
+		/* Si el usuario no escribe nada, continuar */
+		if (line[0] == '\0')
+			continue;
+
+		/* Ejecuta el comando escrito */
+		execute_command(line);
 	}
 }

@@ -8,6 +8,8 @@
 #include <sys/types.h>	/* pid_t */
 #include <sys/wait.h>	/* wait */
 
+extern char **environ;
+
 void run_shell(void);
 void execute_command(char *command);
 
