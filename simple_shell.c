@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 /**
  * run_shell - Bucle principal de la shell
@@ -34,7 +34,7 @@ void run_shell(void)
 			/* Solo ejecuta si no esta vacio */
 			if (strlen(line) > 0)
 				execute_command(line);
-			
+
 		}
 	}
 	else /* Modo no interactivo */

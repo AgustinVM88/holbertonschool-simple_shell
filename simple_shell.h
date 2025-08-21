@@ -1,5 +1,5 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef SIMPLE_SHELL_H
+#define SIMPLE_SHELL_H
 
 #include <stdio.h>	/* printf, perror */
 #include <stdlib.h>	/* malloc, free, exit */
@@ -11,4 +11,4 @@
 void run_shell(void);
 void execute_command(char *command);
 
-#endif /* SHELL_H */
+#endif /* SIMPLE_SHELL_H */

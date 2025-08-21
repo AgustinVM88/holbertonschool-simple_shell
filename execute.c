@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 /**
  * execute_command - Ejecuta un comando usando fork y execvp
